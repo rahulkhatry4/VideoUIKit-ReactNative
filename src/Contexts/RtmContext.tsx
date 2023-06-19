@@ -26,7 +26,7 @@ export enum rtmStatusEnum {
 
 export type messageType = 'UserData' | 'MuteRequest';
 
-export type messageObjectType = userDataType | muteRequest | genericAction;
+export type messageObjectType = userDataType | muteRequest | genericAction | handsRequest;
 
 export enum clientRoleRaw {
   broadcaster,
@@ -42,6 +42,12 @@ export type genericAction = {
   messageType: 'RtmDataRequest';
   type: 'ping' | 'pong' | 'userData';
 };
+
+export type handsRequest = {
+  messageType: 'HandsRequest';
+  rtcId: number;
+};
+
 
 export type muteRequest = {
   messageType: 'MuteRequest';

@@ -230,6 +230,10 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
       case 'MuteRequest':
         handleReceivedMuteMessage(messageObject);
         break;
+      case 'HandsRequest':
+        console.log("GOT HANDS RAISED REQUEST ON REMOTE!!")
+        console.log(messageObject)
+        break;
       case 'RtmDataRequest':
         switch (messageObject.type) {
           case 'ping':
