@@ -9,6 +9,7 @@ import RemoteControls from './RemoteControls';
 import {MaxUidConsumer} from '../Contexts/MaxUidContext';
 import PropsContext, {Layout} from '../Contexts/PropsContext';
 import {ClientRoleType} from 'react-native-agora';
+import LocalHandsRaised from 'agora-rn-uikit/src/Controls/Local/LocalHandsRaised';
 
 interface ControlsPropsInterface {
   showButton?: boolean;
@@ -26,6 +27,7 @@ const Controls: React.FC<ControlsPropsInterface> = (props) => {
             <LocalAudioMute />
             <LocalVideoMute />
             <SwitchCamera />
+            <LocalHandsRaised />
           </>
         )}
         <EndCall />

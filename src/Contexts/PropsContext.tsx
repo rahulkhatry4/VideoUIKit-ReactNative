@@ -46,6 +46,7 @@ export interface UidInterface {
   uid: number | string;
   audio: ToggleState;
   video: ToggleState;
+  raiseHand: ToggleState;
   streamType: 'high' | 'low';
 }
 
@@ -464,6 +465,14 @@ export interface IconsInterface {
    * Icon to close the overlay in floating layout
    */
   close: string;
+  /**
+   * Icon to raise hand
+   */
+  raiseHand: string;
+  /**
+   * Icon to lower hand
+   */
+  lowerHand: string;
 }
 
 const PropsContext = React.createContext<PropsInterface>(initialValue);

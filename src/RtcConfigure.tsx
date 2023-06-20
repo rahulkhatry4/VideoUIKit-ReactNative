@@ -70,6 +70,13 @@ const RtcConfigure: React.FC<PropsWithChildren<Partial<RtcPropsInterface>>> = (
           rtcProps.role == ClientRoleType.ClientRoleAudience
             ? ToggleState.disabled
             : ToggleState.enabled,
+        raiseHand: // eslint-disable-next-line eqeqeq
+          rtcProps.mode == 1 &&
+          rtcProps.role &&
+          // eslint-disable-next-line eqeqeq
+          rtcProps.role == ClientRoleType.ClientRoleAudience
+            ? ToggleState.disabled
+            : ToggleState.enabled,
         streamType: 'high',
       },
     ],
