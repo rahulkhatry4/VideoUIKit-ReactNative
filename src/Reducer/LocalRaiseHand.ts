@@ -6,15 +6,15 @@ export default function LocalRaiseHand(
   action: ActionType<"LocalRaiseHand">
 ) {
   let stateUpdate = {};
-  const LocalRaiseHand = (user: UidInterface) => {
+  const LocalHandRaise = (user: UidInterface) => {
     if (user.uid === "local") {
       user.raiseHand = action.value[0];
     }
     return user;
   };
   stateUpdate = {
-    min: state.min.map(LocalRaiseHand),
-    max: state.max.map(LocalRaiseHand),
+    min: state.min.map(LocalHandRaise),
+    max: state.max.map(LocalHandRaise),
   };
   return stateUpdate;
 }
