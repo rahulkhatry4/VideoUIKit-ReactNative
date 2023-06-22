@@ -41,15 +41,33 @@ const LocalHandsRaised: React.FC<LocalAudioMuteProps> = (props) => {
           : (muteRemoteAudio as object)),
           alignSelf: 'center'
       }}
-      onPress={() => {
-        sendChannelMessage({
-          messageType:"HandsRequest",
-          rtcId:localUser.uid as number
-        })
-      }}
+      onPress={() => raiseHand(localUser, dispatch, sendChannelMessage)}
     />
   );
 };
+
+export const raiseHand = async (
+  local: UidInterface,
+  dispatch: DispatchType,
+  sendChannelMessage
+) => {
+
+  const localState = local.raiseHand;
+
+  sendChannelMessage({
+    messageType: "HandsRequest",
+    rtcId: local.uid as number,
+  });
+  dispatch({
+    type: "LocalRaiseHand",
+    value: [
+      localState === ToggleState.enabled
+        ? ToggleState.disabling
+        : ToggleState.enabling,
+    ],
+  });
+};
+
 
 
 export default LocalHandsRaised;

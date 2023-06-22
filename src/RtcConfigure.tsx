@@ -26,6 +26,7 @@ import {
   BecomeAudience,
   LocalMuteAudio,
   LocalMuteVideo,
+  LocalRaiseHand,
   RemoteAudioStateChanged,
   RemoteVideoStateChanged,
   UpdateDualStreamMode,
@@ -142,6 +143,11 @@ const RtcConfigure: React.FC<PropsWithChildren<Partial<RtcPropsInterface>>> = (
       case 'LocalMuteVideo':
         if (actionTypeGuard(action, action.type)) {
           stateUpdate = LocalMuteVideo(state, action);
+        }
+        break;
+      case 'LocalRaiseHand':
+        if (actionTypeGuard(action, action.type)) {
+          stateUpdate = LocalRaiseHand(state, action);
         }
         break;
       case 'RemoteAudioStateChanged':

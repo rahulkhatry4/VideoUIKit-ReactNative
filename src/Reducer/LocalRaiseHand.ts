@@ -8,7 +8,7 @@ export default function LocalRaiseHand(
   let stateUpdate = {};
   const LocalRaiseHand = (user: UidInterface) => {
     if (user.uid === "local") {
-      user.audio = action.value[0];
+      user.raiseHand = action.value[0];
     }
     return user;
   };
