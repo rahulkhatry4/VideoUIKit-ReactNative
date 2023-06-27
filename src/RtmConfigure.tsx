@@ -313,6 +313,10 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
       console.log('sendMessage', e);
     }
   };
+  useEffect(()=>{
+    // @ts-ignore
+    props.setSendChannelMessage(sendChannelMessage)
+  },[])
 
   const sendPeerMessage = async (
     payload: messageObjectType,

@@ -415,6 +415,8 @@ export interface AgoraUIKitProps {
    * Callbacks for the signalling layer
    */
   rtmCallbacks?: rtmCallbacks;
+  sendChannelMessage?: any;
+
 }
 
 export type rtcCallbacks = Partial<CallbacksInterface>;
@@ -424,6 +426,7 @@ export interface PropsInterface {
   styleProps?: Partial<StylePropInterface>;
   callbacks?: Partial<CallbacksInterface>;
   rtmCallbacks?: rtmCallbacks;
+  sendChannelMessage?: any;
 }
 
 const initialValue: PropsInterface = {
