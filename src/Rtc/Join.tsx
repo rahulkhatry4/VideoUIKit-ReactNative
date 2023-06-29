@@ -94,6 +94,8 @@ const Join: React.FC<
           UID,
           {},
         );
+
+
       }
       if (videoState === ToggleState.enabled && Platform.OS === 'ios') {
         dispatch({

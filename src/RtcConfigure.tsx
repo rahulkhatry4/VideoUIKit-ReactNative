@@ -31,6 +31,7 @@ import {
   RemoteVideoStateChanged,
   UpdateDualStreamMode,
   UserJoined,
+  LocalScreenShare,
   UserMuteRemoteAudio,
   UserMuteRemoteVideo,
   UserOffline,
@@ -143,6 +144,11 @@ const RtcConfigure: React.FC<PropsWithChildren<Partial<RtcPropsInterface>>> = (
       case 'LocalMuteVideo':
         if (actionTypeGuard(action, action.type)) {
           stateUpdate = LocalMuteVideo(state, action);
+        }
+        break;
+      case 'LocalScreenShare':
+        if (actionTypeGuard(action, action.type)) {
+          stateUpdate = LocalScreenShare(state, action);
         }
         break;
       case 'LocalRaiseHand':

@@ -14,12 +14,12 @@ interface LocalRaiseHandProps {
   variant?: 'outlined' | 'text';
 }
 
-const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
+const LocalScreenShare: React.FC<LocalRaiseHandProps> = (props) => {
   const localUser = useContext(LocalContext);
   const {
-    btnText = localUser.raiseHand === ToggleState.enabled
-      ? "Raise Hand"
-      : "Lower Hand",
+    btnText = localUser.screenShare === ToggleState.enabled
+      ? "Stop Share"
+      : "Screen Share",
   } = props;
   const {styleProps} = useContext(PropsContext);
   const {localBtnStyles, remoteBtnStyles} = styleProps || {};
@@ -28,41 +28,41 @@ const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
 
   return (
     <BtnTemplate
-      name={localUser.raiseHand === ToggleState.enabled ? 'raiseHand' : 'lowerHand'}
+      name={localUser.screenShare === ToggleState.enabled ?  'lowerHand':'raiseHand'}
       btnText={btnText}
       style={{
         ...styles.localBtn,
           alignSelf: 'center'
       }}
-      onPress={() => raiseHand(localUser, dispatch, sendChannelMessage)}
+      onPress={() => {
+
+
+        console.log(localUser.screenShare)
+        dispatch({
+          type: "LocalScreenShare",
+          value: [
+            localUser.screenShare === ToggleState.disabled
+                ? ToggleState.enabled
+                : ToggleState.disabled,
+          ],
+        });
+
+        console.log("CLICK SEE")
+        if(localUser.screenShare === ToggleState.enabled){
+          RtcEngine.stopScreenCapture()
+        }
+        else {
+          RtcEngine.startScreenCapture({
+            captureVideo:true
+          })
+        }
+
+      }
+      }
     />
   );
 };
 
-export const raiseHand = async (
-  local: UidInterface,
-  dispatch: DispatchType,
-  sendChannelMessage
-) => {
-
-  const localState = local.raiseHand;
-  console.log("staet", localState)
-
-  sendChannelMessage({
-    messageType: "HandsRequest",
-    rtcId: local.uid as number,
-  });
-
-  dispatch({
-    type: "LocalRaiseHand",
-    value: [
-      localState === ToggleState.disabled
-        ? ToggleState.enabled
-        : ToggleState.disabled,
-    ],
-  });
-};
 
 
-
-export default LocalHandsRaised;
+export default LocalScreenShare;

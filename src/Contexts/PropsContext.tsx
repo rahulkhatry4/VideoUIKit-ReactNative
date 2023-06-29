@@ -47,6 +47,7 @@ export interface UidInterface {
   audio: ToggleState;
   video: ToggleState;
   raiseHand: ToggleState;
+  screenShare: ToggleState;
   streamType: 'high' | 'low';
 }
 
@@ -356,6 +357,9 @@ export interface CallbacksInterface {
    * Callback for when a user raises their hand
    */
   LocalRaiseHand(raiseHand: ToggleState): void;
+  LocalScreenShare(raiseHand: ToggleState): void;
+
+
   RemoteAudioStateChanged: RemoveUndefined<
     IRtcEngineEventHandler["onRemoteAudioStateChanged"]
   >;

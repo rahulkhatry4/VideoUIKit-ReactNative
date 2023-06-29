@@ -10,6 +10,7 @@ import {MaxUidConsumer} from '../Contexts/MaxUidContext';
 import PropsContext, {Layout} from '../Contexts/PropsContext';
 import {ClientRoleType} from 'react-native-agora';
 import LocalHandsRaised from 'agora-rn-uikit/src/Controls/Local/LocalHandsRaised';
+import LocalScreenShare from 'agora-rn-uikit/src/Controls/Local/LocalScreenShare';
 
 interface ControlsPropsInterface {
   showButton?: boolean;
@@ -28,6 +29,7 @@ const Controls: React.FC<ControlsPropsInterface> = (props) => {
             <LocalVideoMute />
             <SwitchCamera />
             <LocalHandsRaised />
+            <LocalScreenShare />
           </>
         )}
         <EndCall />
