@@ -47,7 +47,7 @@ export const raiseHand = async (
 
   const localState = local.raiseHand;
   console.log("staet", localState)
-
+  
   sendChannelMessage({
     messageType: "HandsRequest",
     rtcId: local.uid as number,
@@ -56,9 +56,9 @@ export const raiseHand = async (
   dispatch({
     type: "LocalRaiseHand",
     value: [
-      localState === ToggleState.disabled
-        ? ToggleState.enabled
-        : ToggleState.disabled,
+      localState === ToggleState.enabled
+        ? ToggleState.disabling
+        : ToggleState.enabling,
     ],
   });
 };

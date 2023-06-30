@@ -234,6 +234,11 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
         console.log("GOT HANDS RAISED REQUEST ON REMOTE!!")
         console.log(messageObject)
         break;
+      case 'ChatRequest':
+        console.log("GOT CHAT REQUEST ON REMOTE!!")
+        console.log(messageObject)
+          props.onChat(messageObject)
+        break;
       case 'RtmDataRequest':
         switch (messageObject.type) {
           case 'ping':
@@ -317,7 +322,6 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
     // @ts-ignore
     props.setSendChannelMessage(sendChannelMessage)
   },[])
-
   const sendPeerMessage = async (
     payload: messageObjectType,
     peerId: RtmChannelMember['userId'],
