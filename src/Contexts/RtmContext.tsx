@@ -45,7 +45,7 @@ export type genericAction = {
 
 export type handsRequest = {
   messageType: 'HandsRequest';
-  rtcId: number;
+  username: string;
 };
 
 

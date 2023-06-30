@@ -21,7 +21,7 @@ const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
       ? "Raise Hand"
       : "Lower Hand",
   } = props;
-  const {styleProps} = useContext(PropsContext);
+  const {styleProps, rtmProps} = useContext(PropsContext);
   const {localBtnStyles, remoteBtnStyles} = styleProps || {};
   const {RtcEngine, dispatch} = useContext(RtcContext);
   const {sendChannelMessage, uidMap} = useContext(RtmContext || {});
@@ -34,7 +34,7 @@ const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
         ...styles.localBtn,
           alignSelf: 'center'
       }}
-      onPress={() => raiseHand(localUser, dispatch, sendChannelMessage)}
+      onPress={() => raiseHand(localUser, dispatch, sendChannelMessage, rtmProps.username)}
     />
   );
 };
@@ -42,27 +42,26 @@ const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
 export const raiseHand = async (
   local: UidInterface,
   dispatch: DispatchType,
-  sendChannelMessage
+  sendChannelMessage,
+  username
 ) => {
 
   const localState = local.raiseHand;
-  console.log("staet", localState)
-
+  console.log("staet", username)
+  
   sendChannelMessage({
     messageType: "HandsRequest",
-    rtcId: local.uid as number,
+    username: username,
   });
 
   dispatch({
     type: "LocalRaiseHand",
     value: [
-      localState === ToggleState.disabled
-        ? ToggleState.enabled
-        : ToggleState.disabled,
+      localState === ToggleState.enabled
+        ? ToggleState.disabling
+        : ToggleState.enabling,
     ],
   });
 };
-
-
 
 export default LocalHandsRaised;

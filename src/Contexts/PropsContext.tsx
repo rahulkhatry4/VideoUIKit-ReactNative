@@ -212,6 +212,10 @@ export interface RtcConnectionData {
    * (optional) URL for token server, manages fetching and updating tokens automatically. Must follow the schema here - https://github.com/AgoraIO-Community/agora-token-service/
    */
   tokenUrl?: string;
+  /**
+   * to get a username as a prop for raise hand feature
+   */
+  username?: string;
 }
 
 /**
