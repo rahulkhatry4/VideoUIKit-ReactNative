@@ -57,9 +57,9 @@ export const raiseHand = async (
   dispatch({
     type: "LocalRaiseHand",
     value: [
-      localState === ToggleState.enabled
-        ? ToggleState.disabling
-        : ToggleState.enabling,
+      localState === ToggleState.disabled
+        ? ToggleState.enabled
+        : ToggleState.disabled,
     ],
   });
 };

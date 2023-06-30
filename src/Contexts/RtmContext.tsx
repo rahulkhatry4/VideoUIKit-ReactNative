@@ -26,7 +26,7 @@ export enum rtmStatusEnum {
 
 export type messageType = 'UserData' | 'MuteRequest';
 
-export type messageObjectType = userDataType | muteRequest | genericAction | handsRequest;
+export type messageObjectType = userDataType | muteRequest | genericAction | handsRequest | chatMessage;
 
 export enum clientRoleRaw {
   broadcaster,
@@ -48,6 +48,11 @@ export type handsRequest = {
   username: string;
 };
 
+export type chatMessage = {
+  messageType: 'ChatRequest';
+  userID: number;
+  data:object;
+};
 
 export type muteRequest = {
   messageType: 'MuteRequest';
