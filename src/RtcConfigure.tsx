@@ -27,11 +27,11 @@ import {
   LocalMuteAudio,
   LocalMuteVideo,
   LocalRaiseHand,
+  LocalScreenShare,
   RemoteAudioStateChanged,
   RemoteVideoStateChanged,
   UpdateDualStreamMode,
   UserJoined,
-  LocalScreenShare,
   UserMuteRemoteAudio,
   UserMuteRemoteVideo,
   UserOffline,
@@ -72,7 +72,16 @@ const RtcConfigure: React.FC<PropsWithChildren<Partial<RtcPropsInterface>>> = (
           rtcProps.role == ClientRoleType.ClientRoleAudience
             ? ToggleState.disabled
             : ToggleState.enabled,
-        raiseHand: // eslint-disable-next-line eqeqeq
+        // eslint-disable-next-line eqeqeq
+        raiseHand:
+          rtcProps.mode == 1 &&
+          rtcProps.role &&
+          // eslint-disable-next-line eqeqeq
+          rtcProps.role == ClientRoleType.ClientRoleAudience
+            ? ToggleState.disabled
+            : ToggleState.enabled,
+        // eslint-disable-next-line eqeqeq
+        screenShare:
           rtcProps.mode == 1 &&
           rtcProps.role &&
           // eslint-disable-next-line eqeqeq
@@ -146,14 +155,14 @@ const RtcConfigure: React.FC<PropsWithChildren<Partial<RtcPropsInterface>>> = (
           stateUpdate = LocalMuteVideo(state, action);
         }
         break;
-      case 'LocalScreenShare':
-        if (actionTypeGuard(action, action.type)) {
-          stateUpdate = LocalScreenShare(state, action);
-        }
-        break;
       case 'LocalRaiseHand':
         if (actionTypeGuard(action, action.type)) {
           stateUpdate = LocalRaiseHand(state, action);
+        }
+        break;
+      case 'LocalScreenShare':
+        if (actionTypeGuard(action, action.type)) {
+          stateUpdate = LocalScreenShare(state, action);
         }
         break;
       case 'RemoteAudioStateChanged':

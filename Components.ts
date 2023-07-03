@@ -5,6 +5,7 @@ import Endcall from './src/Controls/Local/EndCall';
 import LocalAudioMute from './src/Controls/Local/LocalAudioMute';
 import LocalVideoMute from './src/Controls/Local/LocalVideoMute';
 import LocalHandsRaised from './src/Controls/Local/LocalHandsRaised';
+import LocalScreenShare from './src/Controls/Local/LocalScreenShare';
 import SwitchCamera from './src/Controls/Local/SwitchCamera';
 import LocalControls from './src/Controls/LocalControls';
 import RemoteAudioMute from './src/Controls/Remote/RemoteAudioMute';
@@ -28,6 +29,7 @@ export {
   LocalAudioMute,
   LocalVideoMute,
   LocalHandsRaised,
+  LocalScreenShare,
   SwitchCamera,
   LocalControls,
   RemoteAudioMute,

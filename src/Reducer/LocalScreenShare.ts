@@ -8,7 +8,7 @@ export default function LocalScreenShare(
   let stateUpdate = {};
   const LocalScreenShare = (user: UidInterface) => {
     if (user.uid === "local") {
-      user.raiseHand = action.value[0];
+      user.screenShare = action.value[0];
     }
     return user;
   };

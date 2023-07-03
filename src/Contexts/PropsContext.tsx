@@ -331,8 +331,8 @@ export interface CallbacksInterface {
    */
   SwitchCamera(): void;
   UpdateDualStreamMode(mode: DualStreamMode): void;
-  UserJoined: RemoveUndefined<IRtcEngineEventHandler["onUserJoined"]>;
-  UserOffline: RemoveUndefined<IRtcEngineEventHandler["onUserOffline"]>;
+  UserJoined: RemoveUndefined<IRtcEngineEventHandler['onUserJoined']>;
+  UserOffline: RemoveUndefined<IRtcEngineEventHandler['onUserOffline']>;
   /**
    * Callback for when a user swaps video in pinned layout
    */
@@ -344,11 +344,11 @@ export interface CallbacksInterface {
   /**
    * Callback for when a user mutes a remote user's audio
    */
-  UserMuteRemoteAudio(user: UidInterface, muted: UidInterface["audio"]): void;
+  UserMuteRemoteAudio(user: UidInterface, muted: UidInterface['audio']): void;
   /**
    * Callback for when a user mutes a remote user's video
    */
-  UserMuteRemoteVideo(user: UidInterface, muted: UidInterface["video"]): void;
+  UserMuteRemoteVideo(user: UidInterface, muted: UidInterface['video']): void;
   /**
    * Callback for when a user mutes their audio
    */
@@ -361,17 +361,19 @@ export interface CallbacksInterface {
    * Callback for when a user raises their hand
    */
   LocalRaiseHand(raiseHand: ToggleState): void;
-  LocalScreenShare(raiseHand: ToggleState): void;
-
+  /**
+   * Callback for when a user shares their screen
+   */
+  LocalScreenShare(screenShare: ToggleState): void;
 
   RemoteAudioStateChanged: RemoveUndefined<
-    IRtcEngineEventHandler["onRemoteAudioStateChanged"]
+    IRtcEngineEventHandler['onRemoteAudioStateChanged']
   >;
   RemoteVideoStateChanged: RemoveUndefined<
-    IRtcEngineEventHandler["onRemoteVideoStateChanged"]
+    IRtcEngineEventHandler['onRemoteVideoStateChanged']
   >;
   JoinChannelSuccess: RemoveUndefined<
-    IRtcEngineEventHandler["onJoinChannelSuccess"]
+    IRtcEngineEventHandler['onJoinChannelSuccess']
   >;
   BecomeAudience(): void;
 }
@@ -488,6 +490,14 @@ export interface IconsInterface {
    * Icon to lower hand
    */
   lowerHand: string;
+  /**
+   * Icon to start screen share
+   */
+  startScreenShare: string;
+  /**
+   * Icon to stop screen share
+   */
+  stopScreenShare: string;
 }
 
 const PropsContext = React.createContext<PropsInterface>(initialValue);
