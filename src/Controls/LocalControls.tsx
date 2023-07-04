@@ -11,9 +11,11 @@ import PropsContext, {Layout} from '../Contexts/PropsContext';
 import {ClientRoleType} from 'react-native-agora';
 import LocalHandsRaised from 'agora-rn-uikit/src/Controls/Local/LocalHandsRaised';
 import LocalScreenShare from 'agora-rn-uikit/src/Controls/Local/LocalScreenShare';
+import LocalChat from 'agora-rn-uikit/src/Controls/Local/LocalChat';
 
 interface ControlsPropsInterface {
   showButton?: boolean;
+  onPress?:any;
 }
 
 const Controls: React.FC<ControlsPropsInterface> = (props) => {
@@ -30,6 +32,7 @@ const Controls: React.FC<ControlsPropsInterface> = (props) => {
             <SwitchCamera />
             <LocalHandsRaised />
             <LocalScreenShare />
+            <LocalChat onPress={props.onPress} />
           </>
         )}
         <EndCall />

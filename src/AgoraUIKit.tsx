@@ -31,14 +31,14 @@ const AgoraUIKitv3: React.FC<PropsInterface> = (props) => {
             {props.rtcProps.disableRtm ? (
               <>
                 {layout === Layout.Grid ? <GridVideo /> : <PinnedVideo />}
-                <LocalControls />
+                <LocalControls onPress={props.onPress} />
               </>
             ) : (
               <RtmConfigure onChat={props.onChat} setSendChannelMessage={(fn)=>{
                 props.sendChannelMessage(fn)
               }}>
                 {layout === Layout.Grid ? <GridVideo /> : <PinnedVideo />}
-                <LocalControls />
+                <LocalControls onPress={props.onPress}/>
                 <PopUp />
               </RtmConfigure>
             )}
@@ -78,6 +78,7 @@ const AgoraUIKit: React.FC<AgoraUIKitProps> = (props) => {
         sendChannelMessage={(fn: any)=>{
           props.sendChannelMessage(fn)
         }}
+        onPress={props.onPress}
       rtcProps={adaptedProps.rtcProps}
       rtmProps={adaptedProps.rtmProps}
       callbacks={props.rtcCallbacks}
