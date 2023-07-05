@@ -498,6 +498,10 @@ export interface IconsInterface {
    * Icon to stop screen share
    */
   stopScreenShare: string;
+  /**
+   * Icon to chat
+   */
+  chat: string;
 }
 
 const PropsContext = React.createContext<PropsInterface>(initialValue);
