@@ -426,6 +426,7 @@ export interface AgoraUIKitProps {
    */
   rtmCallbacks?: rtmCallbacks;
   sendChannelMessage?: any;
+  setUserHandRaised?: any;
 
 }
 
@@ -437,6 +438,7 @@ export interface PropsInterface {
   callbacks?: Partial<CallbacksInterface>;
   rtmCallbacks?: rtmCallbacks;
   sendChannelMessage?: any;
+  setUserHandRaised?: any;
 }
 
 const initialValue: PropsInterface = {

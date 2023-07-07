@@ -21,7 +21,7 @@ const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
       ? "Raise Hand"
       : "Lower Hand",
   } = props;
-  const {styleProps, rtmProps} = useContext(PropsContext);
+  const {styleProps, setUserHandRaised, rtmProps} = useContext(PropsContext);
   const {localBtnStyles, remoteBtnStyles} = styleProps || {};
   const {RtcEngine, dispatch} = useContext(RtcContext);
   const {sendChannelMessage, uidMap} = useContext(RtmContext || {});
@@ -34,7 +34,7 @@ const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
         ...styles.localBtn,
           alignSelf: 'center'
       }}
-      onPress={() => raiseHand(localUser, dispatch, sendChannelMessage, rtmProps.username)}
+      onPress={() => raiseHand(localUser, dispatch, sendChannelMessage, rtmProps.username, setUserHandRaised)}
     />
   );
 };
@@ -43,12 +43,19 @@ export const raiseHand = async (
   local: UidInterface,
   dispatch: DispatchType,
   sendChannelMessage,
-  username
+  username,
+  setUserHandRaised
 ) => {
 
   const localState = local.raiseHand;
-  console.log("staet", username)
+  console.log("staet", localState)
   
+  if (localState === 1) {
+    setUserHandRaised(username)
+  } else {
+    setUserHandRaised("")
+  }
+
   sendChannelMessage({
     messageType: "HandsRequest",
     username: username,
