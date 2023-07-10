@@ -16,7 +16,7 @@ interface LocalAudioMuteProps {
 
 const LocalAudioMute: React.FC<LocalAudioMuteProps> = (props) => {
   const {btnText = 'Audio', variant = 'Outlined'} = props;
-  const {styleProps} = useContext(PropsContext);
+  const {styleProps, rtcProps} = useContext(PropsContext);
   const {localBtnStyles, remoteBtnStyles} = styleProps || {};
   const {muteLocalAudio} = localBtnStyles || {};
   const {muteRemoteAudio} = remoteBtnStyles || {};
@@ -33,6 +33,7 @@ const LocalAudioMute: React.FC<LocalAudioMuteProps> = (props) => {
           ? (muteLocalAudio as object)
           : (muteRemoteAudio as object)),
       }}
+      disabled={rtcProps.audioOff}
       onPress={() => muteAudio(localUser, dispatch, RtcEngine)}
     />
   );

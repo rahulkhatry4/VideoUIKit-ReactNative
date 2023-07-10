@@ -264,11 +264,11 @@ export interface RtcSettings {
   /**
    * Enable / Disable audio when user first joins the channel
    */
-  defaultAudio?:boolean;
+  defaultAudio?: boolean;
   /**
    * Enable / Disable video when user first joins the channel
    */
-  defaultVideo?:boolean;
+  defaultVideo?: boolean;
   // /**
   //  * Enable the mic before joining the call. (default: true)
   //  */
@@ -277,6 +277,14 @@ export interface RtcSettings {
   //  * Enable the camera before joining the call. Only use for initiak(default: true)
   //  */
   // enableVideo?: boolean;
+  /**
+   * Disable audio throughout call
+   */
+  audioOff?: boolean;
+  /**
+   * Disable video throughout call
+   */
+  videoOff?: boolean;
 }
 
 /**
