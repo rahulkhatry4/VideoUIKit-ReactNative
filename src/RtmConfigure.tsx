@@ -37,7 +37,7 @@ import RTMEngine from './RTMEngine';
 const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
   const rtmEngineRef = useRef<RtmEngine>();
   const local = useContext(LocalContext);
-  const {rtcProps, rtmProps, rtmCallbacks} = useContext(PropsContext);
+  const {rtcProps, rtmProps, rtmCallbacks, setUserHandRaised} = useContext(PropsContext);
   const {RtcEngine, dispatch, rtcUidRef} = useContext(RtcContext);
   // const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
   const [uidMap, setUidMap] = useState<Record<number, string>>({});
@@ -231,8 +231,9 @@ const RtmConfigure: React.FC<PropsWithChildren> = (props) => {
         handleReceivedMuteMessage(messageObject);
         break;
       case 'HandsRequest':
-        console.log("GOT HANDS RAISED REQUEST ON REMOTE!!")
-        console.log(messageObject)
+        // console.log("GOT HANDS RAISED REQUEST ON REMOTE!!")
+        // console.log(messageObject)
+        setUserHandRaised(messageObject.username);
         break;
       case 'ChatRequest':
         console.log("GOT CHAT REQUEST ON REMOTE!!")

@@ -48,18 +48,22 @@ export const raiseHand = async (
 ) => {
 
   const localState = local.raiseHand;
-  console.log("staet", localState)
+  // console.log("staet", localState);
   
   if (localState === 1) {
+    sendChannelMessage({
+      messageType: "HandsRequest",
+      username: username,
+    });
     setUserHandRaised(username)
   } else {
+    sendChannelMessage({
+      messageType: 'HandsRequest',
+      username: "",
+    });
     setUserHandRaised("")
   }
 
-  sendChannelMessage({
-    messageType: "HandsRequest",
-    username: username,
-  });
 
   dispatch({
     type: "LocalRaiseHand",
