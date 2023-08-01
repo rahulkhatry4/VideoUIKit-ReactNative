@@ -12,6 +12,7 @@ import {ClientRoleType} from 'react-native-agora';
 import LocalHandsRaised from 'agora-rn-uikit/src/Controls/Local/LocalHandsRaised';
 import LocalScreenShare from 'agora-rn-uikit/src/Controls/Local/LocalScreenShare';
 import LocalChat from 'agora-rn-uikit/src/Controls/Local/LocalChat';
+import MenuOptions from './Local/MenuOptions';
 
 interface ControlsPropsInterface {
   showButton?: boolean;
@@ -33,6 +34,7 @@ const Controls: React.FC<ControlsPropsInterface> = (props) => {
             <LocalHandsRaised />
             <LocalScreenShare />
             <LocalChat onPress={props.onPress} />
+            <MenuOptions />
           </>
         )}
         <EndCall />

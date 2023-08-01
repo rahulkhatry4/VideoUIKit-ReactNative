@@ -28,6 +28,7 @@ import {
   LocalMuteVideo,
   LocalRaiseHand,
   LocalScreenShare,
+  OptionsMenu,
   RemoteAudioStateChanged,
   RemoteVideoStateChanged,
   UpdateDualStreamMode,
@@ -88,6 +89,14 @@ const RtcConfigure: React.FC<PropsWithChildren<Partial<RtcPropsInterface>>> = (
           rtcProps.role == ClientRoleType.ClientRoleAudience
             ? ToggleState.disabled
             : ToggleState.enabled,
+        menuOptions:
+          rtcProps.mode == 1 &&
+          rtcProps.role &&
+          // eslint-disable-next-line eqeqeq
+          rtcProps.role == ClientRoleType.ClientRoleAudience
+            ? ToggleState.disabled
+            : ToggleState.enabled,
+        // eslint-disable-next-line eqeqeq
         streamType: 'high',
       },
     ],
@@ -163,6 +172,11 @@ const RtcConfigure: React.FC<PropsWithChildren<Partial<RtcPropsInterface>>> = (
       case 'LocalScreenShare':
         if (actionTypeGuard(action, action.type)) {
           stateUpdate = LocalScreenShare(state, action);
+        }
+        break;
+      case 'MenuOptions':
+        if (actionTypeGuard(action, action.type)) {
+          stateUpdate = OptionsMenu(state, action);
         }
         break;
       case 'RemoteAudioStateChanged':

@@ -49,6 +49,7 @@ export interface UidInterface {
   raiseHand: ToggleState;
   screenShare: ToggleState;
   streamType: 'high' | 'low';
+  menuOptions: ToggleState;
 }
 
 /**
@@ -373,6 +374,10 @@ export interface CallbacksInterface {
    * Callback for when a user shares their screen
    */
   LocalScreenShare(screenShare: ToggleState): void;
+  /**
+   * Callback for when a user opens the options menu
+   */
+  MenuOptions(menuOptions: ToggleState): void;
 
   RemoteAudioStateChanged: RemoveUndefined<
     IRtcEngineEventHandler['onRemoteAudioStateChanged']
@@ -512,6 +517,10 @@ export interface IconsInterface {
    * Icon to chat
    */
   chat: string;
+  /**
+   * Icon for menu
+   */
+  menu: string;
 }
 
 const PropsContext = React.createContext<PropsInterface>(initialValue);
