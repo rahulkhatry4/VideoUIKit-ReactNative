@@ -16,20 +16,12 @@ interface LocalScreenShareProps {
 
 const LocalScreenShare: React.FC<LocalScreenShareProps> = (props) => {
   const localUser = useContext(LocalContext);
-  const {
-    btnText = localUser.screenShare === ToggleState.enabled
-      ? "Stop Share"
-      : "Screen Share",
-  } = props;
-  const {styleProps} = useContext(PropsContext);
-  const {localBtnStyles, remoteBtnStyles} = styleProps || {};
   const {RtcEngine, dispatch} = useContext(RtcContext);
-  const {sendChannelMessage, uidMap} = useContext(RtmContext || {});
 
   return (
     <BtnTemplate
       name={localUser.screenShare === ToggleState.enabled ?  'stopScreenShare' : 'startScreenShare'}
-      btnText={btnText}
+      // btnText={btnText}
       style={{
         ...styles.localBtn,
           alignSelf: 'center'

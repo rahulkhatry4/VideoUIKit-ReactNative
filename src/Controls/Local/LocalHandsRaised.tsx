@@ -16,20 +16,14 @@ interface LocalRaiseHandProps {
 
 const LocalHandsRaised: React.FC<LocalRaiseHandProps> = (props) => {
   const localUser = useContext(LocalContext);
-  const {
-    btnText = localUser.raiseHand === ToggleState.enabled
-      ? "Raise Hand"
-      : "Lower Hand",
-  } = props;
   const {styleProps, setUserHandRaised, rtmProps} = useContext(PropsContext);
-  const {localBtnStyles, remoteBtnStyles} = styleProps || {};
-  const {RtcEngine, dispatch} = useContext(RtcContext);
-  const {sendChannelMessage, uidMap} = useContext(RtmContext || {});
+  const {dispatch} = useContext(RtcContext);
+  const {sendChannelMessage} = useContext(RtmContext || {});
 
   return (
     <BtnTemplate
       name={localUser.raiseHand === ToggleState.enabled ? 'raiseHand' : 'lowerHand'}
-      btnText={btnText}
+      // btnText={btnText}
       style={{
         ...styles.localBtn,
           alignSelf: 'center'

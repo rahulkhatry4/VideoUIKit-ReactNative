@@ -71,7 +71,7 @@ const BtnTemplate: React.FC<BtnTemplateInterface> = (props) => {
           }}
         />
       </View>
-      <Text
+      {props?.btnText ? <Text
         style={{
           textAlign: 'center',
           marginTop: 5,
@@ -79,7 +79,7 @@ const BtnTemplate: React.FC<BtnTemplateInterface> = (props) => {
           opacity: disabled ? 0.4 : 1,
         }}>
         {props.btnText}
-      </Text>
+      </Text> : <></>}
     </TouchableOpacity>
   );
 };

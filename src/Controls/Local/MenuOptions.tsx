@@ -16,8 +16,7 @@ interface MenuOptionsProps {
 
 const MenuOptions: React.FC<MenuOptionsProps> = (props) => {
   const {btnText = 'Menu', variant = 'Outlined'} = props;
-  const {rtcProps} = useContext(PropsContext);
-  const {RtcEngine, dispatch} = useContext(RtcContext);
+  const {dispatch} = useContext(RtcContext);
   const localUser = useContext(LocalContext);
 
   return (
@@ -25,7 +24,7 @@ const MenuOptions: React.FC<MenuOptionsProps> = (props) => {
       name={"menu"}
       btnText={btnText}
       style={styles.localBtn}
-      onPress={() => handleMenu(localUser, dispatch, RtcEngine)}
+      onPress={() => handleMenu(localUser, dispatch)}
     />
   );
 };
@@ -33,7 +32,6 @@ const MenuOptions: React.FC<MenuOptionsProps> = (props) => {
 export const handleMenu = async (
   local: UidInterface,
   dispatch: DispatchType,
-  RtcEngine: IRtcEngine,
 ) => {
   const localState = local.menuOptions;
   console.log(localState);
