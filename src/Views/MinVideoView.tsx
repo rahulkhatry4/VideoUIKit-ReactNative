@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+import {View, TouchableOpacity, Image, Text} from 'react-native';
 import {RenderModeType, RtcSurfaceView} from 'react-native-agora';
+import RtmContext from '../Contexts/RtmContext';
 import styles from '../Style';
 import icons from '../Controls/Icons';
 import RemoteControls from '../Controls/RemoteControls';
@@ -21,6 +22,7 @@ const MinVideoView: React.FC<MinViewInterface> = (props) => {
   const {styleProps, rtcProps} = useContext(PropsContext);
   const {theme, remoteBtnStyles, customIcon} = styleProps || {};
   const {minCloseBtnStyles} = remoteBtnStyles || {};
+
   const {showOverlay} = props || {};
 
   return (
@@ -66,6 +68,7 @@ const UserVideoWithFallback = (props: {
   const {Fallback, user} = props;
   const {styleProps} = useContext(PropsContext);
   const {videoPlaceholderContainer, videoPlaceholderIcon} = styleProps || {};
+  const {usernames} = useContext(RtmContext);
 
   return user.video ? (
     <UserVideo user={user} />
@@ -73,10 +76,8 @@ const UserVideoWithFallback = (props: {
     <Fallback />
   ) : (
     <View style={[styles.minViewFallback, videoPlaceholderContainer]}>
-      <ImageIcon
-        name={'videocamOff'}
-        style={[styles.placeholderIcon, videoPlaceholderIcon]}
-      />
+      <Text style={{'color' : 'white', 'alignSelf' : 'center', 'fontSize' : 32}}> {usernames[user.uid][0]}</Text>
+      <Text style={{'color' : 'white', 'marginLeft' : 10}}> {usernames[user.uid]}</Text>
     </View>
   );
 };

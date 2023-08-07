@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
+import {Text} from 'react-native';
 import {RenderModeType, RtcSurfaceView} from 'react-native-agora';
 import styles from '../Style';
+import RtmContext from '../Contexts/RtmContext';
 import PropsContext, {UidInterface} from '../Contexts/PropsContext';
 import {StyleSheet, View} from 'react-native';
 import ImageIcon from '../Controls/ImageIcon';
@@ -48,21 +50,21 @@ const MaxVideoView: React.FC<MaxViewInterface> = (props) => {
       ) : Fallback ? (
         <Fallback />
       ) : (
-        <DefaultFallback />
+        <DefaultFallback user={props.user}/>
       )}
     </React.Fragment>
   );
 };
 
-const DefaultFallback = () => {
+const DefaultFallback = ({user}) => {
   const {styleProps} = useContext(PropsContext);
+  const {usernames} = useContext(RtmContext);
   const {videoPlaceholderContainer} = styleProps || {};
+  const username_val = usernames[user.uid] || 'User'
   return (
     <View style={[style.placeholderContainer, videoPlaceholderContainer]}>
-      <ImageIcon
-        name={'videocamOff'}
-        style={[styles.placeholderIcon, styleProps?.videoPlaceholderIcon]}
-      />
+      <Text style={{'color' : 'white', 'alignSelf' : 'center', 'fontSize' : 86}}> {username_val[0]}</Text>
+      <Text style={{'color' : 'white', 'marginLeft' : 10}}> {username_val}</Text>
     </View>
   );
 };

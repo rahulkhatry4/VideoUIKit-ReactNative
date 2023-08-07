@@ -69,10 +69,10 @@ const Controls: React.FC<ControlsPropsInterface> = (props) => {
                     <LocalHandsRaised />
                     <Text style={style.optionText}>{localUser.raiseHand ? "Raise " : "Lower "}Hand</Text>
                   </View>
-                  <View style={style.option}>
+                  {/* <View style={style.option}>
                     <LocalScreenShare />
                     <Text style={style.optionText}>{localUser.screenShare ? "Stop " : "Start "}Screen Share</Text>
-                  </View>
+                  </View> */}
                   <View style={style.option}>
                     <LocalChat onPress={props.onPress} />
                     <Text style={style.optionText}>Chat</Text>
